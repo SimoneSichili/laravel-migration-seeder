@@ -17,4 +17,8 @@ use Illuminate\Support\Facades\Route;
 //     return view('welcome');
 // });
 
+// Route Home
 Route::get('/', 'HomeController@index');
+
+// Route CRUD
+Route::resource('articles', 'ArticleController');
