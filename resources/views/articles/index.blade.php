@@ -11,21 +11,19 @@
     </head>
     <body>
         <table class="table table-striped table-bordered">
-            <thead class="thead-dark">
-                <tr>
-                    <th>ID</th>
-                    <th>Titolo </th>
-                    <th>Sottotitolo</th>
-                    <th>Autore</th>
-                    <th>Testo</th>
-                    <th>Pubblicato il</th>
-                    <th>Creato il</th>
-                    <th>Aggiornato il</th>
-                    <th></th>
-                    <th></th>
-                    <th></th>
-                </tr>
-            </thead>
+            <tr>
+                <th>ID</th>
+                <th>Titolo </th>
+                <th>Sottotitolo</th>
+                <th>Autore</th>
+                <th>Testo</th>
+                <th>Pubblicato il</th>
+                <th>Creato il</th>
+                <th>Aggiornato il</th>
+                <th></th>
+                <th></th>
+                <th></th>
+            </tr>
             <tbody>
                 @foreach ($articles as $article)
                     <tr>

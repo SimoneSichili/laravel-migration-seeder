@@ -10,31 +10,44 @@
         <title>Blog CRUD Index</title>
     </head>
     <body>
-        <table class="table table-striped table-bordered">
-            <thead class="thead-dark">
+        <div class="container">
+            <table class="table table-striped table-bordered">
                 <tr>
-                    <th>ID</th>
-                    <th>Titolo</th>
-                    <th>Sottotitolo</th>
-                    <th>Autore</th>
-                    <th>Testo</th>
-                    <th>Plubblicato il</th>
-                    <th>Creato il</th>
-                    <th>Aggiornato il</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
+                    <td class="table-dark">ID</td>
                     <td>{{ $article->id }}</td>
+                </tr>
+                <tr>
+                    <td class="table-dark">Titolo</td>
                     <td>{{ $article->title }}</td>
+                </tr>
+                <tr>
+                    <td class="table-dark">Sottotitolo</td>
                     <td>{{ $article->subtitle }}</td>
+                </tr>
+                <tr>
+                    <td class="table-dark">Autore</td>
                     <td>{{ $article->author }}</td>
+                </tr>
+                <tr>
+                    <td class="table-dark">Testo</td>
                     <td>{{ $article->text }}</td>
+                </tr>
+                <tr>
+                    <td class="table-dark">Pubblicato il</td>
                     <td>{{ $article->publication_date }}</td>
+                </tr>
+                <tr>
+                    <td class="table-dark">Creato il</td>
                     <td>{{ $article->created_at }}</td>
+                </tr>
+                <tr>
+                    <td class="table-dark">Aggiornato il</td>
                     <td>{{ $article->updated_at }}</td>
                 </tr>
-            </tbody>
         </table>
+        <div class="text-right">
+            <a href="{{ route("articles.index") }}" class="btn btn-primary">Torna agli articoli</a>
+        </div>
+        </div>
     </body>
 </html>
