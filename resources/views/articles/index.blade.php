@@ -10,6 +10,8 @@
         <title>Blog CRUD Index</title>
     </head>
     <body>
+        <h1 class="my-3">Lista degli articoli</h1>
+        <a href="{{ route("articles.create") }}" class="btn btn-primary my-5">Crea un nuovo articolo</a>
         <table class="table table-striped table-bordered">
             <tr>
                 <th>ID</th>
@@ -35,8 +37,8 @@
                         <td>{{ $article->publication_date }}</td>
                         <td>{{ $article->created_at }}</td>
                         <td>{{ $article->updated_at }}</td>
-                        <td><a href="{{ route("articles.show", $article->id) }}"><i class="fas fa-search-plus"></i></a></td>
-                        <td></td>
+                        <td><a href="{{ route("articles.show", $article->id) }}" class="btn btn-primary"><i class="fas fa-search-plus"></i></a></td>
+                        <td><a href="#" class="btn btn-primary"><i class="fas fa-pencil-alt"></i></a></td>
                         <td></td>
                     </tr>
                 @endforeach

@@ -7,7 +7,7 @@
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">      
         <!-- my CSS -->
         <link rel="stylesheet" href="{{ asset("css/app.css") }}">
-        <title>Blog CRUD Index</title>
+        <title>Blog CRUD Singolo articolo</title>
     </head>
     <body>
         <div class="container">
