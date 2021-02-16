@@ -7,6 +7,12 @@ use App\Article;
 
 class ArticleController extends Controller
 {
+    private $articleValidation = [
+	    'title' => 'required|string|max:50',
+		'subtitle' => 'required|string|max:100',
+		'author' => 'required|string|max:20',
+	    'text' => 'required',
+    ];
     /**
      * Display a listing of the resource.
      *
@@ -37,11 +43,14 @@ class ArticleController extends Controller
     public function store(Request $request)
     {
         $data = $request->all();
+
+        $request->validate($this->articleValidation);
+
         $article = new Article();
         $article->fill($data);
         $article->save();
 
-        return redirect()->route("articles.index");
+        return redirect()->route("articles.index")->with('message', 'Articolo creato correttamente!');
     }
 
     /**
@@ -62,9 +71,9 @@ class ArticleController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Article $article)
     {
-        //
+        return view('articles.edit', compact('article'));
     }
 
     /**
@@ -74,9 +83,14 @@ class ArticleController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Article $article)
     {
-        //
+        $data = $request->all();
+        $request->validate($this->articleValidation);
+
+        $article->update($data);
+
+        return redirect()->route("articles.index")->with('message', 'Articolo aggiornato correttamente!');
     }
 
     /**
@@ -85,8 +99,10 @@ class ArticleController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Article $article)
     {
-        //
+
+        $article->delete();
+        return redirect()->route("articles.index")->with('message', 'Articolo eliminato correttamente!');
     }
 }

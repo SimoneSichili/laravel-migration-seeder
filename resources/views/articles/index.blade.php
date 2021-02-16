@@ -12,6 +12,10 @@
     <body>
         <h1 class="my-3">Lista degli articoli</h1>
         <a href="{{ route("articles.create") }}" class="btn btn-primary my-5">Crea un nuovo articolo</a>
+
+        @if(Session::has('message'))
+            <p class="alert alert-info">{{ Session::get('message') }}</p>
+        @endif
         <table class="table table-striped table-bordered">
             <tr>
                 <th>ID</th>
@@ -38,8 +42,14 @@
                         <td>{{ $article->created_at }}</td>
                         <td>{{ $article->updated_at }}</td>
                         <td><a href="{{ route("articles.show", $article->id) }}" class="btn btn-primary"><i class="fas fa-search-plus"></i></a></td>
-                        <td><a href="#" class="btn btn-primary"><i class="fas fa-pencil-alt"></i></a></td>
-                        <td></td>
+                        <td><a href="{{ route("articles.edit", $article->id) }}" class="btn btn-primary"><i class="fas fa-pencil-alt"></i></a></td>
+                        <td>
+                            <form action="{{ route("articles.destroy", $article->id) }}" method="POST" onSubmit="return confirm('Sei sicuro di voler eliminare questo articolo?')">
+                                @csrf
+                                @method("DELETE")
+                                <button type="submit" class="btn btn-danger"><i class="fas fa-trash"></i></button>
+                            </form>
+                        </td>
                     </tr>
                 @endforeach
             </tbody>

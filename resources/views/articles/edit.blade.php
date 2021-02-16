@@ -11,7 +11,7 @@
     </head>
     <body>
         <div class="container">
-            <h1 class="my-3">Crea un nuovo articolo</h1>
+            <h1 class="my-3">Modifica un articolo</h1>
             @if ($errors->any())
                 <div class="alert alert-danger">
                     <ul>
@@ -21,28 +21,28 @@
                     </ul>
                 </div>
             @endif
-            <form action="{{ route("articles.store") }}" method="POST">
+            <form action="{{ route("articles.update", $article->id) }}" method="POST">
                 @csrf
-                @method("POST")
+                @method("PUT")
                 <div class="form-group">
                     <label for="title">Titolo</label>
-                    <input type="text" class="form-control" id="title" name="title" placeholder="Inserisci un titolo" value="{{ old("title") }}">
+                    <input type="text" class="form-control" id="title" name="title" placeholder="Inserisci un titolo" value="{{ $article->title }}">
                 </div>
                 <div class="form-group">
                     <label for="subtitle">Sottotitolo</label>
-                    <input type="text" class="form-control" id="subtitle" name="subtitle" placeholder="Inserisci un sottotitolo" value="{{ old("subtitle") }}">
+                    <input type="text" class="form-control" id="subtitle" name="subtitle" placeholder="Inserisci un sottotitolo" value="{{ $article->subtitle  }}">
                 </div>
                 <div class="form-group">
                     <label for="author">Autore</label>
-                    <input type="text" class="form-control" id="author" name="author" placeholder="Inserisci un autore" value="{{ old("author") }}">
+                    <input type="text" class="form-control" id="author" name="author" placeholder="Inserisci un autore" value="{{ $article->author  }}">
                 </div>
                 <div class="form-group">
                     <label for="text">Testo dell'articolo</label>
-                    <textarea class="form-control" id="text" name="text" rows="6" placeholder="Inserisci un testo">{{ old("text") }}</textarea>
+                    <textarea class="form-control" id="text" name="text" rows="6" placeholder="Inserisci un testo">{{ $article->text  }}</textarea>
                 </div>
                 <div class="form-group">
                     <label for="publication_date">Data</label>
-                    <input type="date" class="form-control" id="publication_date" name="publication_date" value="{{ old("publication_date") }}">
+                    <input type="date" class="form-control" id="publication_date" name="publication_date" value="{{ $article->publication_date  }}">
                 </div>
                 <button type="submit" class="btn btn-primary">Salva</button>
             </form>
