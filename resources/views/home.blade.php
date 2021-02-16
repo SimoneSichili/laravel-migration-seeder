@@ -10,6 +10,16 @@
         <title>Blog</title>
     </head>
     <body>
-        <h1 class="btn btn-danger">Hello World</h1>
+        <h1>Articoli</h1>
+        @foreach ($articles as $article)
+            <section>
+                <h2>{{ $article->title }}</h2>
+                <h4>{{ $article->subtitle }}</h4>
+                <p>{{ $article->text }}</p>
+                <h5>{{ $article->author }}</h5>
+                <h6>{{ $article->publication_date }}</h6>
+            </section>
+            <hr>
+        @endforeach
     </body>
 </html>
